@@ -1,0 +1,8 @@
+build:
+  version: "3.0"
+
+accounts:
+  message: "Welcome to EazyBank accounts related local APIs "
+  contactDetails:
+    name: "Mohsen Afshar- Developer"
+    email: "test@eazybank.com"

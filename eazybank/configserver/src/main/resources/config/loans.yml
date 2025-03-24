@@ -1,0 +1,8 @@
+build:
+  version: "3.0"
+
+loans:
+  message: "Welcome to EazyBank loans related local APIs "
+  contactDetails:
+    name: "Mohsen Afshar - Developer"
+    email: "test@eazybank.com"

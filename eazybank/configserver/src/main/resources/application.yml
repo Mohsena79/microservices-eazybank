@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: "configserver"
+  profiles:
+    active: git
+  cloud:
+    config:
+      server:
+#        native:
+#          search-locations: "classpath:/config"
+        git:
+          uri: "https://github.com/Mohsena79/digital-store/tree/main/myshop"
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+
+encrypt:
+  key: "6f8f13fec90ecb21457633d18e8af017e38e98114ae164c5f33d7ff2229368cf"
+
+server:
+  port: 8071

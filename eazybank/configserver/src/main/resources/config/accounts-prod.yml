@@ -1,0 +1,14 @@
+
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+build:
+  version: "1.0"
+
+accounts:
+  message: "Welcome to EazyBank accounts related prod APIs "
+  contactDetails:
+    name: "Mohsen Afshar… - Product Owner"
+    email: "{cipher}ce755c6b57e36fe0e11353181c0e205e85626e6bfd3c18899fa804b0f33ebac3f62075c47e170f8c6931382cf04b65a7"
