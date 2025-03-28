@@ -1,0 +1,55 @@
+services:
+  network-deploy-service:
+    networks:
+      - eazybank
+
+
+  microservice-db-config:
+    extends:
+      service: network-deploy-service
+    image: mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 10
+      interval: 10s
+      start_period: 10s
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+  #  microservice-db-config:
+  #    extends:
+  #      service: network-deploy-service
+  #    image: mysql
+  #    environment:
+  #      MYSQL_ROOT_PASSWORD: root
+  #      MYSQL_INITDB_SKIP_TZINFO: 1  # جلوگیری از بارگذاری اطلاعات زمانی
+  #    deploy:
+  #      resources:
+  #        limits:
+  #          memory: 1g  # محدود کردن مصرف حافظه به 1 گیگابایت
+  #    healthcheck:
+  #      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+  #      timeout: 10s
+  #      retries: 10
+  #      interval: 10s
+  #      start_period: 10s
+  #    command:
+  #      - "--innodb_buffer_pool_size=256M"  # محدود کردن اندازه حافظه InnoDB
+  #      - "--max_connections=100"  # محدود کردن تعداد اتصالات همزمان
+  #      - "--table_open_cache=200"  # محدود کردن تعداد کش جداول
+  microservice-base-config:
+    extends:
+      service: network-deploy-service
+    deploy:
+      resources:
+        limits:
+          memory: 700g
+
+  microservice-configserver-config:
+    extends:
+      service: microservice-base-config
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
