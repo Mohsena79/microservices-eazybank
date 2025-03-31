@@ -85,7 +85,7 @@
 					<version>3.4.2</version>
 					<configuration>
 						<to>
-							<image>mohsenafshar/${project.artifactId}:s7</image>
+							<image>mohsenafshar/${project.artifactId}:s9</image>
 						</to>
 					</configuration>
 				</plugin>
